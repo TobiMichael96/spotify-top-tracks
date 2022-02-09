@@ -45,14 +45,27 @@ const returnTracks = function (err, data) {
     }
 
     const output = generateTable(err, artist_name_list, image_url_list);
-
     console.log(output);
 
-    fs.appendFile('README.md', output, err => {
+    fs.readFile('README.md',  'utf8' , (err, data) => {
         if (err) {
             console.log('No README file found.', err);
+            return;
         }
-    })
+
+        let substring = data.substring(
+            data.indexOf("Spotify") - 21,
+            data.length - 1
+        );
+
+        const content = data.replace(substring, output);
+
+        fs.writeFile('README.md', content, 'utf8',err => {
+            if (err) {
+                console.log('Something went wrong.', err);
+            }
+        });
+    });
 }
 
 const getTopTracks = async () => {
@@ -68,7 +81,9 @@ const getTopTracks = async () => {
 }
 
 const generateTable = function (err, data, meta_data) {
-    let result = "";
+    let result = "\n\n";
+    result += '<h3 align="center">Spotify Top Tracks</h3>';
+    result += "\n\n";
     result += data.join([separator = "|"]);
     result += '\n:---:|:----:|:----:\n';
     result += meta_data.join([separator = "|"]);
