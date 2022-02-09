@@ -83,7 +83,8 @@ const setToken = async () => {
 
                 res.send('Success! You can now close the window.')
 
-                console.log('Successfully retrieved access token!\n Refresh token: ' + refreshToken)
+                console.log('Successfully retrieved access token!');
+                console.log('Refresh token: ' + refreshToken);
 
                 server.close()
                 process.exit(0)
