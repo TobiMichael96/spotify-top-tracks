@@ -1,0 +1,30 @@
+{
+  "name": "spotify-top-tracks",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "latest",
+    "enquirer": "latest",
+    "commander": "latest",
+    "conf": "latest",
+    "spotify-web-api-node": "latest"
+  },
+  "keywords": [
+    "spotify"
+  ],
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "get-token": "node index.js get-token",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiMichael96/spotify-top-tracks.git"
+  },
+  "author": "TM <me@tobiasmichael.de>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TobiMichael96/spotify-top-tracks/issues"
+  },
+  "homepage": "https://github.com/TobiMichael96/spotify-top-tracks#readme"
+}
