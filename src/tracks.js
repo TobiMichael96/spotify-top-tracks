@@ -59,7 +59,7 @@ const returnTracks = function (err, data) {
             console.log("Replacing old stuff.");
             let substring = data.substring(
                 data.indexOf(">Spotify") - 20,
-                data.length - 1
+                data.length
             );
             content = data.replace(substring, output);
         } else {
