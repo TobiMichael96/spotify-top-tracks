@@ -55,13 +55,15 @@ const returnTracks = function (err, data) {
 
         let content;
 
-        if (data.indexOf("Spotify") ===! -1) {
+        if (data.indexOf(">Spotify") > 0) {
+            console.log("Replacing old stuff.");
             let substring = data.substring(
-                data.indexOf("Spotify") - 21,
+                data.indexOf(">Spotify") - 20,
                 data.length - 1
             );
             content = data.replace(substring, output);
         } else {
+            console.log("Just adding stuff.");
             content = data + output;
         }
 
