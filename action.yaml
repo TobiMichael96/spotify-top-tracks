@@ -1,21 +1,15 @@
-name: CI
+name: SpotifyTopTracksTM
+author: TobiMichael96
+description: Show your Spotify top tracks in your GitHub account!
+branding:
+  icon: user-check
+  color: gray-dark
 
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-  strategy:
-    matrix:
-      node-version: [12.x]
-
+# The action will parse its name to check if it's the official action or if it's a forked one
+# On the official action, it'll use the docker image published on GitHub registry when using a released version, allowing faster runs
+# On a forked action, it'll rebuild the docker image from Dockerfile to take into account changes you made
+runs:
+  using: node16
   steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
     - run: npm install
