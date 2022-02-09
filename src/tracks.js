@@ -53,12 +53,17 @@ const returnTracks = function (err, data) {
             return;
         }
 
-        let substring = data.substring(
-            data.indexOf("Spotify") - 21,
-            data.length - 1
-        );
+        let content;
 
-        const content = data.replace(substring, output);
+        if (data.indexOf("Spotify") ===! -1) {
+            let substring = data.substring(
+                data.indexOf("Spotify") - 21,
+                data.length - 1
+            );
+            content = data.replace(substring, output);
+        } else {
+            content = data + output;
+        }
 
         fs.writeFile('README.md', content, 'utf8',err => {
             if (err) {
