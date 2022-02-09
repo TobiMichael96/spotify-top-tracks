@@ -5,6 +5,21 @@ branding:
   icon: user-check
   color: gray-dark
 
+inputs:
+  CLIENT_ID:
+    description: Client ID of your spotify application.
+    required: true
+  CLIENT_SECRET:
+    description: Client secret of your spotify application.
+    required: true
+  REFRESH_TOKEN:
+    description: Refresh token of your spotify account.
+    required: true
+
 runs:
   using: 'node16'
   main: 'index.js'
+  env:
+    CLIENT_ID: ${{ inputs.CLIENT_ID }}
+    CLIENT_SECRET: ${{ inputs.CLIENT_SECRET }}
+    REFRESH_TOKEN: ${{ inputs.REFRESH_TOKEN }}
