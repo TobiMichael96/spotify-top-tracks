@@ -1,5 +1,6 @@
 const SpotifyWebApi = require('spotify-web-api-node')
 const Conf = require('conf')
+const fs = require("fs");
 
 let clientId = process.env.CLIENT_ID;
 let clientSecret = process.env.CLIENT_SECRET;
@@ -43,7 +44,15 @@ const returnTracks = function (err, data) {
         image_url_list.push('<img src="' + image_url + '"/>');
     }
 
-    console.log(generateTable(err, artist_name_list, image_url_list));
+    const output = generateTable(err, artist_name_list, image_url_list);
+
+    console.log(output);
+
+    fs.appendFile('README.md', output, err => {
+        if (err) {
+            console.log('No README file found.', err);
+        }
+    })
 }
 
 const getTopTracks = async () => {

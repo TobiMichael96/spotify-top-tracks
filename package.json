@@ -6,7 +6,8 @@
     "enquirer": "latest",
     "commander": "latest",
     "conf": "latest",
-    "spotify-web-api-node": "latest"
+    "spotify-web-api-node": "latest",
+    "fs": "latest"
   },
   "keywords": [
     "spotify"
